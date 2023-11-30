@@ -1,6 +1,7 @@
-# Dependencies 
+# Dependencies / Paths
 node_modules
 build
+coverage
 
 # Enviroments
 .env
