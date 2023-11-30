@@ -1,15 +1,20 @@
-import { expect, test, describe } from "vitest";
+import { expect, test, describe, beforeEach } from "vitest";
 import { compare, hash } from "bcryptjs";
 import { InMemoryUsersRepository } from "src/repositories/in-memory/in-memory-users-repository";
 import { UserAlreadyExistsError } from "./errors/user-already-exists-error";
 import { AuthenticateUseCase } from "./authenticate";
 import { InvalidCredentialsError } from "./errors/invalid-credentials-error";
 
-describe("Authenticate Use Case", () => {
-  test("Deve ser possível se autenticar", async () => {
-    const usersRepository = new InMemoryUsersRepository();
-    const sut = new AuthenticateUseCase(usersRepository);
+let usersRepository: InMemoryUsersRepository;
+let sut: AuthenticateUseCase;
 
+describe("Authenticate Use Case", () => {
+  beforeEach(() => {
+    usersRepository = new InMemoryUsersRepository();
+    sut = new AuthenticateUseCase(usersRepository);
+  });
+
+  test("Deve ser possível se autenticar", async () => {
     await usersRepository.create({
       name: "Usuário",
       email: "email.do.usuario@email.com",
@@ -25,9 +30,6 @@ describe("Authenticate Use Case", () => {
   });
 
   test("Não deve ser possível se autenticar com um email inválido", async () => {
-    const usersRepository = new InMemoryUsersRepository();
-    const sut = new AuthenticateUseCase(usersRepository);
-
     expect(async () => {
       await sut.execute({
         email: "email.do.usuario@email.com",
@@ -37,9 +39,6 @@ describe("Authenticate Use Case", () => {
   });
 
   test("Não deve ser possível se autenticar com uma senha inválida", async () => {
-    const usersRepository = new InMemoryUsersRepository();
-    const sut = new AuthenticateUseCase(usersRepository);
-
     await usersRepository.create({
       name: "Usuário",
       email: "email.do.usuario@email.com",
