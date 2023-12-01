@@ -1,7 +1,4 @@
-import { UsersRepository } from "src/repositories/users-repository";
-import { InvalidCredentialsError } from "./errors/invalid-credentials-error";
-import { compare } from "bcryptjs";
-import { CheckIn, User } from "@prisma/client";
+import { CheckIn } from "@prisma/client";
 import { CheckInsRepository } from "src/repositories/check-ins-repository";
 import { GymsRepository } from "src/repositories/gyms-repository";
 import { ResourceNotFoundError } from "./errors/resource-not-found-error";
