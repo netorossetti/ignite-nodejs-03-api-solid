@@ -91,7 +91,7 @@ describe("Check-in Use Case", () => {
   });
 
   test("O usuário não pode fazer check-in se não estiver perto da academia", async () => {
-    gymsRepository.itens.push({
+    gymsRepository.items.push({
       id: "gym-02",
       title: "Gym 02",
       description: "Description Gym 02",
