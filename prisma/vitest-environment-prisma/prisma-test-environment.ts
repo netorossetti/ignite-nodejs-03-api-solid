@@ -26,8 +26,6 @@ export default <Environment>{
 
     return {
       async teardown() {
-        console.log("Teardown");
-
         await prisma.$executeRawUnsafe(
           `DROP SCHEMA IF EXISTS "${schema}" CASCADE`
         );
