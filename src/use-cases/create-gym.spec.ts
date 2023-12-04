@@ -13,7 +13,7 @@ describe("Create Gym Use Case", () => {
 
   test("Deve ser possível cadastrar uma academia", async () => {
     const { gym } = await sut.execute({
-      title: "Usuário 2",
+      title: "Javascript Gym",
       description: null,
       phone: null,
       latitude: -21.7897478,
