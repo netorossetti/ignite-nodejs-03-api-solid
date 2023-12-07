@@ -15,9 +15,9 @@ jobs:
         ports:
           - 5432:5432
         env:
-          - POSTGRES_USER=postgres
-          - POSTGRES_PASSWORD=postgres
-          - POSTGRES_DATABASE=apisolid
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DATABASE: apisolid
 
     steps: 
       - uses: actions/checkout@v3
